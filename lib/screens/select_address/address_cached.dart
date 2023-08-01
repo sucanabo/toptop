@@ -28,7 +28,7 @@ class AddressCached{
     }
   }
   void addDistrict(int provinceId, List<AddressModel> list){
-    if(cache['provinces'] == null || (cache['provinces'] != null &&  !cache['provinces']!.containsKey('$provinceId'))) return;
+    if (cache['provinces']?['$provinceId']?['districts'] != null)  return;
     for(int i = 0; i< list.length; i++){
       cache['provinces']!['$provinceId']!['districts'].putIfAbsent(
         '$i', ()=> {
@@ -38,4 +38,21 @@ class AddressCached{
       );
     }
   }
+  // void addWard(int provinceId,int districtId, List<AddressModel> list){
+  //   if (cache['provinces'] == null ||
+  //       cache['provinces']?['$provinceId'] != null ||
+  //       cache['provinces']?['$provinceId']?['districts'] != null ||
+  //       cache['provinces']?['$provinceId']?['districts']['$districtId'] != null
+  //   ) {
+  //     return;
+  //   }
+  //   for(int i = 0; i< list.length; i++){
+  //     cache['provinces']!['$provinceId']!['districts'].putIfAbsent(
+  //         '$i', ()=> {
+  //       'model': list[i],
+  //       'wards': <AddressModel>[],
+  //     }
+  //     );
+  //   }
+  // }
 }
