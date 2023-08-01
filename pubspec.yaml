@@ -9,7 +9,7 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
-  http:
+  dio:
   video_player:
 dev_dependencies:
   flutter_test:
